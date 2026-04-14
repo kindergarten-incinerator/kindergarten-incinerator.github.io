@@ -1,38 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>KINDERGARTEN INCINERATOR</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #eaeaea;
-            font-family: Arial;
-            text-align: center;
-            padding-top: 100px;
-        }
-        h1 {
-            font-size: 40px;
-            letter-spacing: 2px;
-        }
-        p {
-            color: #888;
-        }
-        a {
-            color: #aaa;
-            text-decoration: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Kindergarten Incinerator</title>
+
+<style>
+body {
+    margin: 0;
+    background: #050505;
+    color: #eaeaea;
+    font-family: Arial, sans-serif;
+}
+
+/* 导航栏 */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+nav a {
+    margin: 0 20px;
+    color: #8a2b2b;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #c94b4b;
+}
+
+/* 首页 */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background: radial-gradient(circle at center, #150000 0%, #000 100%);
+}
+
+.hero h1 {
+    font-size: 48px;
+    letter-spacing: 4px;
+    color: #7a1f1f;
+}
+
+.hero p {
+    color: #555;
+}
+
+/* 分区 */
+.section {
+    padding: 100px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.section h2 {
+    border-bottom: 1px solid #300000;
+    padding-bottom: 10px;
+    color: #8a2b2b;
+}
+
+/* 项目卡片 */
+.project {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #200000;
+}
+
+.project:hover {
+    border-color: #7a1f1f;
+}
+</style>
 </head>
 
 <body>
-    <h1>KINDERGARTEN INCINERATOR</h1>
-    <p>Indie Game Developer / Comic Artist</p>
 
-    <br><br>
+<nav>
+    <a href="#projects">Projects</a>
+    <a href="#art">Art</a>
+    <a href="#about">About</a>
+</nav>
 
-    <a href="#">Projects</a> |
-    <a href="#">Art</a> |
-    <a href="#">Contact</a>
+<div class="hero">
+    <h1>Kindergarten Incinerator</h1>
+    <p>Indie Game Studio / Psychological Horror</p>
+</div>
+
+<div class="section" id="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+        <h3>Untitled Horror Game</h3>
+        <p>A psychological horror game about control and memory.</p>
+    </div>
+
+</div>
+
+<div class="section" id="art">
+    <h2>Art</h2>
+    <p>Coming soon...</p>
+</div>
+
+<div class="section" id="about">
+    <h2>About</h2>
+    <p>A studio focusing on yuri and psychological horror experiences.</p>
+</div>
 
 </body>
 </html>
