@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kindergarten Incinerator</title>
-    <!-- 引入字体 -->
+    <!-- 引入字体（添加细体字重） -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@900&family=Libre+Baskerville:wght@700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@300;600;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@900&family=Libre+Baskerville:wght@700&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -33,22 +33,31 @@
             background: rgba(0,0,0,0.8);
             text-align: center;
             z-index: 100;
-            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+            backdrop-filter: blur(10px);
         }
 
         nav a {
             margin: 0 20px;
-            color: #8a2b2b;
+            color: #ff0000;
             text-decoration: none;
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 1px;
-            font-size: 18px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow:
+                0 0 10px rgba(255, 0, 0, 0.8),
+                0 0 30px rgba(255, 0, 0, 0.5),
+                0 0 60px rgba(255, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
 
         nav a:hover {
-            color: #c94b4b;
-            text-shadow: 0 0 10px rgba(201, 75, 75, 0.8);
+            color: #ff3333;
+            text-shadow:
+                0 0 15px rgba(255, 0, 0, 0.9),
+                0 0 40px rgba(255, 0, 0, 0.6),
+                0 0 80px rgba(255, 0, 0, 0.4);
+            transform: translateY(-2px);
         }
 
         /* 首页 */
@@ -104,20 +113,23 @@
             margin-bottom: 20px;
         }
 
-        /* 下面的介绍 */
+        /* 下面的介绍（修改为细体+白色外发光） */
         .hero p {
             color: #ffffff;
             font-size: 24px;
             letter-spacing: 3px;
-            text-shadow: 
-                0 0 10px rgba(255, 0, 0, 0.8),
-                0 0 30px rgba(255, 0, 0, 0.3);
+            font-family: 'Cormorant Garamond', serif; /* 细体字体 */
+            font-weight: 300; /* 细体字重 */
+            text-shadow: /* 白色外发光 */
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(255, 255, 255, 0.5),
+                0 0 60px rgba(255, 255, 255, 0.3);
         }
 
         /* 分区 */
         .section {
             height: 100vh;
-            padding: 120px 20px 40px; /* 顶部预留导航栏空间 */
+            padding: 120px 20px 40px;
             max-width: 1000px;
             margin: 0 auto;
             display: flex;
@@ -173,7 +185,7 @@
         .project:hover {
             border-color: #7a1f1f;
             box-shadow: 0 0 30px rgba(122, 31, 31, 0.4);
-            transform: translateY(-5px); /* 悬停时轻微上浮 */
+            transform: translateY(-5px);
         }
 
         /* 链接样式 */
@@ -191,7 +203,7 @@
         a.link:hover {
             color: #c94b4b;
             text-shadow: 0 0 10px rgba(201, 75, 75, 0.8);
-            transform: translateX(5px); /* 悬停时轻微右移 */
+            transform: translateX(5px);
         }
 
         /* 响应式设计 */
@@ -202,6 +214,11 @@
             
             .hero p {
                 font-size: 18px;
+            }
+            
+            nav a {
+                font-size: 16px;
+                margin: 0 10px;
             }
             
             .section h2 {
@@ -298,3 +315,95 @@
             const hero = document.querySelector('.hero');
             let currentIndex = 0;
             let isScrolling = false;
+            let lastScrollTime = 0;
+            const scrollThreshold = 30;
+
+            // 鼠标移动视差效果
+            if (hero) {
+                const bg = hero.querySelector('.hero-bg');
+                const content = hero.querySelector('.hero-content');
+                if (bg && content) {
+                    hero.addEventListener('mousemove', (e) => {
+                        const x = (e.clientX / window.innerWidth - 0.5);
+                        const y = (e.clientY / window.innerHeight - 0.5);
+                        bg.style.transform = `translate(${x * 15}px, ${y * 15}px)`;
+                        content.style.transform = `translate(${x * 6}px, ${y * 6}px)`;
+                    });
+                }
+            }
+
+            // 计算所有区块的位置
+            const sectionPositions = [0];
+            sections.forEach(section => {
+                sectionPositions.push(section.offsetTop);
+            });
+
+            // 平滑的缓动函数
+            function easeInOutQuint(t) {
+                return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t;
+            }
+
+            // 平滑滚动到目标位置
+            function smoothScrollTo(targetPosition) {
+                const startPosition = window.scrollY;
+                const distance = targetPosition - startPosition;
+                const duration = 1000;
+                let startTime = null;
+
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    const easedProgress = easeInOutQuint(progress);
+                    window.scrollTo(0, startPosition + distance * easedProgress);
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    } else {
+                        isScrolling = false;
+                    }
+                }
+                requestAnimationFrame(animation);
+            }
+
+            // 滚动事件处理
+            window.addEventListener('scroll', () => {
+                const currentTime = Date.now();
+                if (isScrolling || currentTime - lastScrollTime < 60) return;
+                lastScrollTime = currentTime;
+
+                const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+                // 确定当前应该停留的区块
+                let newIndex = 0;
+                for (let i = sectionPositions.length - 1; i >= 0; i--) {
+                    if (scrollPosition >= sectionPositions[i] - scrollThreshold) {
+                        newIndex = i;
+                        break;
+                    }
+                }
+
+                // 如果索引变化，滚动到对应区块
+                if (newIndex !== currentIndex) {
+                    currentIndex = newIndex;
+                    isScrolling = true;
+                    smoothScrollTo(sectionPositions[currentIndex]);
+                }
+            }, { passive: true });
+
+            // 导航链接点击事件
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const targetPosition = targetElement.offsetTop;
+                        isScrolling = true;
+                        smoothScrollTo(targetPosition);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
