@@ -10,7 +10,7 @@
 ![](/images/case-pressure/horror_1.png)
 
 **二者在给予玩家压力的程度上呈以下趋势：**
-![alt text](image-5.png)
+![](/images/case-pressure/horror_2.png)
 <figure>
   <figcaption style="text-align:center; font-style:italic;">微恐的波峰虽不及传统恐怖高，但由于全程压力值频率更高且不落地，导致玩家的总压力暴露量更大。</figcaption>
 </figure>
@@ -18,7 +18,7 @@
 
 
 由此，我们可以总结出传统恐怖与微恐怖压力给玩家感受上的差异。
-![alt text](image-6.png)
+![](/images/case-pressure/horror_3.png)
 
 
 
@@ -27,7 +27,7 @@
 微恐怖是一种通过调动压力与阈值的关系，并延迟情绪释放，使玩家长期处于不安的体验状态。
 
 ## 二、核心机制：输入—认知—行为闭环模型
-![alt text](image-7.png)
+![](/images/case-pressure/horror_4.png)
 
 ### 1.感官输入扰动
 **通过可控的视觉变量制造“诡异”：**
@@ -90,7 +90,7 @@
 
 ## 四、理论提出：基于阈值控制的压力模型
 **模型定义:**
-![alt text](image-8.png)
+![](/images/case-pressure/horror_5.png)
 
 
 **参数说明**
@@ -161,7 +161,7 @@ M（Mechanics）机制限制度
 目的：破坏原本的规则，产生不安感。提升 V 值。
 
 **常驻态与高压态简易示例：**
-![alt text](image-9.png)
+![](/images/case-pressure/horror_6.png)
 <figure>
 
   <figcaption style="text-align:center; font-style:italic;">上图为常驻态，下图为高压态</figcaption>
@@ -187,7 +187,7 @@ M（Mechanics）机制限制度
 提升 C 值。
 
 **示例：**
-![alt text](image-10.png)
+![](/images/case-pressure/horror_7.png)
 
 
 ### 3.行为强制：推进与牵引（Push and Pull）机制
@@ -200,12 +200,12 @@ M（Mechanics）机制限制度
 光导向矛盾：唯一光亮且由场景线条（如管道、走廊走向）汇聚而成的路径是必经之路，但视觉暗示却采用充满“预警”意味的色彩（如高饱和红色）。
 
 提升 M 值。
-![alt text](image-11.png)
+![](/images/case-pressure/horror_8.png)
 <figure>
   <figcaption style="text-align:center; font-style:italic;">广角镜头90FOV下</figcaption>
 </figure>
 
-![alt text](image-12.png)
+![](/images/case-pressure/horror_9.png)
 
 <figure>
   <figcaption style="text-align:center; font-style:italic;">长焦镜头45FOV下</figcaption>
@@ -224,14 +224,14 @@ M（Mechanics）机制限制度
 在游戏前期，它提供真实的推进与牵引；但在高压态时，这些符号会发生视觉扭曲或指向错误。这就将原本的安全庇护所反转为了不可信的陷阱，制造机制层面的崩塌感。
 
 **示例:**
-![alt text](image-13.png)
+![](/images/case-pressure/horror_10.png)
 <figure>
   <figcaption style="text-align:center; font-style:italic;">常规态</figcaption>
 </figure>
 
-![alt text](image-14.png)
+![](/images/case-pressure/horror_11.png)
 
-![alt text](image-15.png)
+![](/images/case-pressure/horror_12.png)
 
 <figure>
   <figcaption style="text-align:center; font-style:italic;">高压态</figcaption>
@@ -257,8 +257,7 @@ M（Mechanics）机制限制度
 本章节将《小小梦魇2》开篇猎影小屋作为样本，验证前文提出的微恐理论在商业实战中的有效性。
 
 ### 1.感知扰动V：视觉联想与演变
-
-![alt text](image-16.png)
+![](/images/case-pressure/horror_13.png)
 **模型验证：**
 
 V值并非瞬间拉高，而是通过视觉引导一步步加深玩家压力。
@@ -267,7 +266,7 @@ V值并非瞬间拉高，而是通过视觉引导一步步加深玩家压力。
 
 ### 2.认知留白：构建“危险认知”
 
-![alt text](image-17.png)
+![](/images/case-pressure/horror_14.png)
 <figure>
   <figcaption style="text-align:center; font-style:italic;">场景中先行展示红鞋子作为诱导，随后在后续陷阱旁放置无色断肢和鞋子。</figcaption>
 </figure>
@@ -282,10 +281,10 @@ V值并非瞬间拉高，而是通过视觉引导一步步加深玩家压力。
 
 ### 3.机制限制M：空间剪裁
 引导性阻碍：在路径中放置大树，强行压缩玩家视野，诱导其走向唯一的横向木桩。
-![alt text](image-18.png)
+![](/images/case-pressure/horror_15.png)
 
 单向阀：如断裂的树干、跌落的高台，阻断回头路。
-![alt text](image-19.png)
+![](/images/case-pressure/horror_16.png)
 
 **模型验证：**
 M（机制限制）通过“空间剪裁”实现。
@@ -296,7 +295,7 @@ M（机制限制）通过“空间剪裁”实现。
 
 ### 4.压力曲线验证：从“窒息感”到“逻辑循环”
 将关卡元素代入模型公式进行复盘：
-![alt text](image-20.png)
+![](/images/case-pressure/horror_17.png)
 
 《小小梦魇2》的成功验证了优秀的微恐不在于制造怪物，而在于通过剥夺玩家的容错率和决策权，使压力在中高位持续震荡。这种由浅入深循序渐进的窒息感本质上是系统对玩家心理节奏（P值）的精准微操。
 
@@ -304,10 +303,10 @@ M（机制限制）通过“空间剪裁”实现。
 
 ## 八、具体实践提案：压力阈值系统
 ### 1.状态分级
-![alt text](image-21.png)
+![](/images/case-pressure/horror_18.png)
 
 ### 2.调控循环
-![alt text](image-22.png)
+![](/images/case-pressure/horror_19.png)
 
 ### 3.环境记忆错位系统
 
