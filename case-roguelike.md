@@ -1,3 +1,6 @@
+layout: default
+title: 动作 Roguelite战斗空间退化问题拆解与反馈系统设计——以《死亡细胞》中后期体验为例
+
 # 动作 Roguelite战斗空间退化问题拆解与反馈系统设计——以《死亡细胞》中后期体验为例
 
 ## 一、 游戏品类界定：动作 Roguelite
