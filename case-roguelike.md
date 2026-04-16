@@ -25,7 +25,7 @@
 
 最终，游戏从精准可控的动作博弈退化为被特效覆盖的数值割草。
 
-![alt text](image.png)
+![](/images/case-roguelike/rogue_1.png)
 
 ## 三、成因拆解：为何“随机”走向“重复”
 ### Build 膨胀的降维打击
