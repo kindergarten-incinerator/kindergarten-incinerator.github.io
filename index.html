@@ -39,7 +39,6 @@ nav a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
     background: radial-gradient(circle at center, #150000 0%, #000 100%);
 }
 
@@ -66,9 +65,15 @@ nav a:hover {
     color: #8a2b2b;
 }
 
+/* 子分类标题 */
+.sub-title {
+    margin-top: 40px;
+    color: #c94b4b;
+}
+
 /* 项目卡片 */
 .project {
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 20px;
     border: 1px solid #200000;
 }
@@ -76,49 +81,69 @@ nav a:hover {
 .project:hover {
     border-color: #7a1f1f;
 }
+
+/* 链接 */
+a.link {
+    color: #8a2b2b;
+    text-decoration: underline;
+}
+
+a.link:hover {
+    color: #c94b4b;
+}
 </style>
 </head>
 
 <body>
 
+<!-- 导航 -->
 <nav>
     <a href="#projects">Projects</a>
     <a href="#art">Art</a>
     <a href="#about">About</a>
 </nav>
 
+<!-- 首页 -->
 <div class="hero">
     <h1>Kindergarten Incinerator</h1>
-    <p>Indie Game Studio / Indie Manga Studio </p>
+    <p>Indie Game Studio / Indie Manga Studio</p>
 </div>
 
+<!-- Projects -->
 <div class="section" id="projects">
     <h2>Projects</h2>
 
+    <!-- GameJam -->
+    <h3 class="sub-title">GameJam</h3>
+
     <div class="project">
-        <h3>Untitled Horror Game</h3>
-        <p>A psychological horror game about control and memory.</p>
+        <h4>Spooktober 6th Annual Visual Novel Jam — 3rd Place</h4>
+        <a class="link" href="https://itch.io/" target="_blank">
+            View on itch.io
+        </a>
+    </div>
+
+    <!-- Indie Projects -->
+    <h3 class="sub-title">Indie Projects</h3>
+
+    <div class="project">
+        <h4>Terminal Stroll（终末漫游）</h4>
+        <p>WIP - A narrative-driven exploration game.</p>
     </div>
 
 </div>
 
+<!-- Art -->
 <div class="section" id="art">
-    <h2>美术</h2>
+    <h2>Art</h2>
     <p>Coming soon...</p>
 </div>
 
+<!-- About -->
 <div class="section" id="about">
     <h2>About</h2>
-    <p>coming soon</p>
+    <p>Coming soon...</p>
 </div>
-
-
- <div class="project">
-        <h3>项目经历</h3>
-        <p>Gamejam</p>
-     
-    </div>
-
 
 </body>
 </html>
