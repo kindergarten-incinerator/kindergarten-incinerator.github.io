@@ -15,7 +15,7 @@
             box-sizing: border-box;
         }
 
-        /* 呼吸动画 */
+        /* 呼吸动画（减慢速度） */
         @keyframes breathe {
             0%, 100% {
                 text-shadow: 
@@ -31,7 +31,7 @@
             }
         }
 
-        /* 白色文字的呼吸动画 */
+        /* 白色文字的呼吸动画（减慢速度） */
         @keyframes breathe-white {
             0%, 100% {
                 text-shadow: 
@@ -81,7 +81,7 @@
                 0 0 30px rgba(255, 0, 0, 0.5),
                 0 0 60px rgba(255, 0, 0, 0.3);
             transition: all 0.3s ease;
-            animation: breathe 4s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite; /* 减慢动画速度 */
         }
 
         nav a:hover {
@@ -144,7 +144,7 @@
                 0 0 30px rgba(255, 0, 0, 0.5),
                 0 0 60px rgba(255, 0, 0, 0.3);
             margin-bottom: 20px;
-            animation: breathe 4s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite; /* 减慢动画速度 */
         }
 
         /* 下面的介绍 */
@@ -158,7 +158,7 @@
                 0 0 10px rgba(255, 255, 255, 0.8),
                 0 0 30px rgba(255, 255, 255, 0.5),
                 0 0 60px rgba(255, 255, 255, 0.3);
-            animation: breathe-white 4s ease-in-out infinite;
+            animation: breathe-white 8s ease-in-out infinite; /* 减慢动画速度 */
         }
 
         /* 分区 */
@@ -177,7 +177,7 @@
                 0 0 10px rgba(255, 0, 0, 0.8),
                 0 0 30px rgba(255, 0, 0, 0.5),
                 0 0 60px rgba(255, 0, 0, 0.3);
-            animation: breathe 4s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite; /* 减慢动画速度 */
         }
 
         h2 {
@@ -208,25 +208,24 @@
             color: #eaeaea;
         }
 
-        /* 中文文本样式 */
-        .chinese-text {
-            font-family: 'Playfair Display', serif;
+        /* 统一白色字体样式 */
+        .white-text {
             color: #ffffff;
             text-shadow:
                 0 0 10px rgba(255, 255, 255, 0.8),
                 0 0 30px rgba(255, 255, 255, 0.5);
-            animation: breathe-white 4s ease-in-out infinite;
+            animation: breathe-white 8s ease-in-out infinite; /* 减慢动画速度 */
         }
 
-        /* 英文文本样式 */
+        /* 中文白色文本（继承白色字体样式） */
+        .chinese-text {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* 英文白色文本（继承白色字体样式） */
         .english-text {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            color: #ffffff;
-            text-shadow:
-                0 0 10px rgba(255, 255, 255, 0.8),
-                0 0 30px rgba(255, 255, 255, 0.5);
-            animation: breathe-white 4s ease-in-out infinite;
         }
 
         /* 项目卡片 */
@@ -259,7 +258,7 @@
                 0 0 30px rgba(255, 0, 0, 0.5);
             margin-top: 20px;
             transition: all 0.3s ease;
-            animation: breathe 4s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite; /* 减慢动画速度 */
         }
 
         a.link:hover {
@@ -317,7 +316,7 @@
             text-shadow:
                 0 0 10px rgba(255, 0, 0, 0.8),
                 0 0 30px rgba(255, 0, 0, 0.5);
-            animation: breathe 4s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite; /* 减慢动画速度 */
         }
 
         /* 漫画分页 */
@@ -379,7 +378,7 @@
             text-shadow:
                 0 0 10px rgba(255, 0, 0, 0.8),
                 0 0 30px rgba(255, 0, 0, 0.5);
-            animation: breathe 4s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite; /* 减慢动画速度 */
         }
 
         /* 条漫 */
@@ -423,7 +422,7 @@
                 0 0 10px rgba(255, 0, 0, 0.8),
                 0 0 30px rgba(255, 0, 0, 0.5),
                 0 0 60px rgba(255, 0, 0, 0.3);
-            animation: breathe 4s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite; /* 减慢动画速度 */
         }
 
         .back-to-top.visible {
@@ -532,7 +531,7 @@
         <h3 class="sub-title">Indie Projects</h3>
         <div class="project">
             <h4>Terminal Stroll（终末漫游）</h4>
-            <p><span class="chinese-text">轻百合末日</span> <span class="english-text">Roguelite</span> <span class="chinese-text">游戏</span></p>
+            <p><span class="white-text chinese-text">轻百合末日</span> <span class="white-text english-text">Roguelite</span> <span class="white-text chinese-text">游戏</span></p>
         </div>
     </div>
 
@@ -541,7 +540,7 @@
         <h2>Case Study</h2>
         <div class="project">
             <h4>动作 Roguelite战斗空间退化问题拆解与反馈系统设计——以《死亡细胞》中后期体验为例</h4>
-            <p>
+            <p class="white-text">
                 本课题聚焦动作Roguelite游戏后期因数值膨胀导致的战斗空间退化痛点<br><br>
                 通过引入动态失控环境系统，利用地形塌陷与路径重构打破玩家的策略收敛<br><br>
                 在保持高爽感的同时找回动作游戏的核心交互深度
@@ -550,7 +549,7 @@
         </div>
         <div class="project">
             <h4>抗压高手：基于“压力阈值”的微恐游戏分析与设计框架</h4>
-            <p>
+            <p class="white-text">
                 本文提出基于压力维持的微恐设计框架构建了压力模型<br><br>
                 通过深度拆解感官扰动、认知留白与机制限制的关系，界定微恐体验边界<br><br>
                 结合《小小梦魇2》案例验证提出行为驱动的动态阈值系统<br><br>
@@ -619,7 +618,7 @@
     <!-- About -->
     <div class="section" id="about">
         <h2>About</h2>
-        <p>Coming soon...</p>
+        <p class="white-text">Coming soon...</p>
     </div>
 
     <script>
