@@ -5,6 +5,22 @@
 <title>Kindergarten Incinerator</title>
 
 <style>
+<script>
+const hero = document.querySelector('.hero');
+const bg = document.querySelector('.hero-bg');
+const content = document.querySelector('.hero-content');
+
+hero.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5);
+    const y = (e.clientY / window.innerHeight - 0.5);
+
+    // 背景：更慢（远）
+    bg.style.transform = `translate(${x * 15}px, ${y * 15}px)`;
+
+    // 文字：更轻（近）
+    content.style.transform = `translate(${x * 6}px, ${y * 6}px)`;
+});
+</script>
 body {
     margin: 0;
     background: #050505;
@@ -36,48 +52,58 @@ nav a:hover {
 .hero {
     position: relative;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    /* 背景图 */
-    background: url('images/homepage/bg.jpeg') center/cover no-repeat;
+    overflow: hidden;
 }
 
-/* 半透明遮罩 */
+/* 背景层*/
+.hero-bg {
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+
+    background: url('images/homepage/bg.jpeg') center/cover no-repeat;
+
+    z-index: 1;
+    transition: transform 0.2s ease-out;
+}
+
+/* 遮罩 */
 .hero::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0, 0, 0, 0.8); /* 数值越大越暗 */
-    z-index: 1;
-}
-
-/* 文字在最上面 */
-.hero h1,
-.hero p {
-    position: relative;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
     z-index: 2;
 }
 
- /* 首页名字 */
-.hero h1 {
-    font-size: 72px;             
-    letter-spacing: 3px;          /* 字距 */
-    color: #ff0000;           
-    font-weight: bold;
-    text-shadow: 
-        0 0 10px rgba(255, 0, 0, 0.8),
-        0 0 30px rgba(255, 0, 0, 0.3);
-    
+/* 内容层 */
+.hero-content {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+
+    transition: transform 0.2s ease-out;
 }
     
 
+/* 首页名字 */ 
+    .hero h1 { font-size: 72px; letter-spacing: 3px; 
+ /* 字距 */ 
+    color: #ff0000;
+    font-weight: bold;
+    text-shadow: 
+        0 0 10px rgba(255, 0, 0, 0.8), 
+        0 0 30px rgba(255, 0, 0, 0.3); 
+}
+    
 /* 下面的介绍 */
 .hero p {
     color: #ffffff;               /* 纯白 */
@@ -141,8 +167,12 @@ a.link:hover {
 
 <!-- 首页 -->
 <div class="hero">
-    <h1>Kindergarten Incinerator</h1>
-    <p>Indie Game Studio / Indie Manga Studio</p>
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+        <h1>Kindergarten Incinerator</h1>
+        <p>Indie Game Studio / Indie Manga Studio</p>
+    </div>
 </div>
 
 <!-- Projects -->
