@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Kindergarten Incinerator</title>
-    <!-- 引入字体 -->
+    <!-- 引入字体（修正后） -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@900&family=Libre+Baskerville:wght@700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@900&family=Libre+Baskerville:wght@700&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -246,10 +246,9 @@
 
     <script>
         window.addEventListener('load', () => {
-            const sections = document.querySelectorAll('.section');
             const hero = document.querySelector('.hero');
 
-            // 鼠标移动视差效果（保持原功能）
+            // 鼠标移动视差效果
             if (hero) {
                 const bg = hero.querySelector('.hero-bg');
                 const content = hero.querySelector('.hero-content');
@@ -263,50 +262,19 @@
                 }
             }
 
-            // 导航链接点击事件：平滑滚动
+            // 导航链接点击事件
             document.querySelectorAll('nav a').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetId = link.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        // 平滑滚动到目标位置
                         window.scrollTo({
                             top: targetElement.offsetTop,
                             behavior: 'smooth'
                         });
                     }
                 });
-            });
-
-            // 滚动时添加曲线动画效果（仅在手动滚动时触发）
-            let lastScrollY = window.scrollY;
-            let ticking = false;
-
-            function updateScroll() {
-                const currentScrollY = window.scrollY;
-                const scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-
-                // 这里可以添加滚动时的视觉效果（如导航栏背景透明度变化等）
-                // 示例：根据滚动位置调整导航栏背景
-                const nav = document.querySelector('nav');
-                if (nav) {
-                    if (currentScrollY > 100) {
-                        nav.style.background = 'rgba(0,0,0,0.8)';
-                    } else {
-                        nav.style.background = 'rgba(0,0,0,0.6)';
-                    }
-                }
-
-                lastScrollY = currentScrollY;
-                ticking = false;
-            }
-
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    requestAnimationFrame(updateScroll);
-                    ticking = true;
-                }
             });
         });
     </script>
