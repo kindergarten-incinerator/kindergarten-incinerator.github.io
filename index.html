@@ -1,245 +1,332 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Kindergarten Incinerator</title>
-<style>
+    <meta charset="UTF-8">
+    <title>Kindergarten Incinerator</title>
+    <!-- 引入摇滚风格字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Metal+Mania&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: #050505;
+            color: #eaeaea;
+            font-family: Arial, sans-serif;
+            scroll-snap-type: y mandatory; /* 滚动捕捉 */
+            overflow-y: auto;
+            scroll-behavior: smooth; /* 平滑滚动 */
+        }
 
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0,0,0,0.6);
+            text-align: center;
+            z-index: 100;
+        }
 
-body {
-    margin: 0;
-    background: #050505;
-    color: #eaeaea;
-    font-family: Arial, sans-serif;
-}
+        nav a {
+            margin: 0 20px;
+            color: #8a2b2b;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
 
-/* 导航栏 */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 20px;
-    background: rgba(0,0,0,0.6);
-    text-align: center;
-}
+        nav a:hover {
+            color: #c94b4b;
+            text-shadow: 0 0 10px rgba(201, 75, 75, 0.8);
+        }
 
-nav a {
-    margin: 0 20px;
-    color: #8a2b2b;
-    text-decoration: none;
-}
+        /* 首页 */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            scroll-snap-align: start; /* 滚动对齐 */
+        }
 
-nav a:hover {
-    color: #c94b4b;
-}
+        /* 背景层*/
+        .hero-bg {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            top: -5%;
+            left: -5%;
+            background: url('images/homepage/bg.jpeg') center/cover no-repeat;
+            z-index: 1;
+            transition: transform 0.2s ease-out;
+        }
 
-/* 首页 */
-.hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
+        /* 遮罩 */
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2;
+        }
 
-/* 背景层*/
-.hero-bg {
-    position: absolute;
-    width: 110%;
-    height: 110%;
-    top: -5%;
-    left: -5%;
+        /* 内容层 */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            transition: transform 0.2s ease-out;
+        }
 
-    background: url('images/homepage/bg.jpeg') center/cover no-repeat;
+        /* 首页名字 */ 
+        .hero h1 { 
+            font-size: 80px; 
+            letter-spacing: 4px; 
+            color: #ff0000;
+            font-weight: bold;
+            font-family: 'Metal Mania', 'Bebas Neue', sans-serif;
+            text-shadow: 
+                0 0 15px rgba(255, 0, 0, 0.9), 
+                0 0 40px rgba(255, 0, 0, 0.5),
+                0 0 80px rgba(255, 0, 0, 0.3);
+        }
 
-    z-index: 1;
-    transition: transform 0.2s ease-out;
-}
+        /* 下面的介绍 */
+        .hero p {
+            color: #ffffff;
+            font-size: 22px;
+            letter-spacing: 2px;
+            text-shadow: 
+                0 0 10px rgba(255, 0, 0, 0.8),
+                0 0 30px rgba(255, 0, 0, 0.3);
+        }
 
-/* 遮罩 */
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 2;
-}
+        /* 分区 */
+        .section {
+            height: 100vh; /* 全屏高度 */
+            padding: 100px 20px;
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 垂直居中内容 */
+            scroll-snap-align: start; /* 滚动对齐 */
+        }
 
-/* 内容层 */
-.hero-content {
-    position: relative;
-    z-index: 3;
+        /* 标题字体 */
+        h2, h3, h4 {
+            font-family: 'Bebas Neue', 'Permanent Marker', sans-serif;
+            letter-spacing: 2px;
+        }
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+        .section h2 {
+            border-bottom: 1px solid #300000;
+            padding-bottom: 10px;
+            color: #8a2b2b;
+            font-size: 48px;
+        }
 
-    height: 100%;
+        /* 子分类标题 */
+        .sub-title {
+            margin-top: 40px;
+            color: #c94b4b;
+            font-size: 32px;
+        }
 
-    transition: transform 0.2s ease-out;
-}
-    
+        /* 项目卡片 */
+        .project {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #200000;
+            transition: all 0.3s ease;
+        }
 
-/* 首页名字 */ 
-    .hero h1 { font-size: 72px; letter-spacing: 3px; 
- /* 字距 */ 
-    color: #ff0000;
-    font-weight: bold;
-    text-shadow: 
-        0 0 10px rgba(255, 0, 0, 0.8), 
-        0 0 30px rgba(255, 0, 0, 0.3); 
-}
-    
-/* 下面的介绍 */
-.hero p {
-    color: #ffffff;               /* 纯白 */
-    font-size: 22px;
-    letter-spacing: 2px;
-    text-shadow: 
-        0 0 10px rgba(255, 0, 0, 0.8),
-        0 0 30px rgba(255, 0, 0, 0.3);
-}
-/* 分区 */
-.section {
-    padding: 100px 20px;
-    max-width: 900px;
-    margin: auto;
-}
+        .project:hover {
+            border-color: #7a1f1f;
+            box-shadow: 0 0 20px rgba(122, 31, 31, 0.3);
+        }
 
-.section h2 {
-    border-bottom: 1px solid #300000;
-    padding-bottom: 10px;
-    color: #8a2b2b;
-}
+        .project h4 {
+            color: #c94b4b;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
 
-/* 子分类标题 */
-.sub-title {
-    margin-top: 40px;
-    color: #c94b4b;
-}
+        /* 链接 */
+        a.link {
+            color: #8a2b2b;
+            text-decoration: underline;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
 
-/* 项目卡片 */
-.project {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #200000;
-}
-
-.project:hover {
-    border-color: #7a1f1f;
-}
-
-/* 链接 */
-a.link {
-    color: #8a2b2b;
-    text-decoration: underline;
-}
-
-a.link:hover {
-    color: #c94b4b;
-}
-</style>
+        a.link:hover {
+            color: #c94b4b;
+            text-shadow: 0 0 5px rgba(201, 75, 75, 0.6);
+        }
+    </style>
 </head>
 
 <body>
+    <!-- 导航 -->
+    <nav>
+        <a href="#projects">Projects</a>
+        <a href="#case">Case Study</a>
+        <a href="#art">Art</a>
+        <a href="#about">About</a>
+    </nav>
 
-<!-- 导航 -->
-<nav>
-    <a href="#projects">Projects</a>
-    <a href="#case">Case Study</a>
-    <a href="#art">Art</a>
-    <a href="#about">About</a>
-</nav>
-
-<!-- 首页 -->
-<div class="hero">
-    <div class="hero-bg"></div>
-
-    <div class="hero-content">
-        <h1>Kindergarten Incinerator</h1>
-        <p>Indie Game Studio / Indie Manga Studio</p>
-    </div>
-</div>
-
-<!-- Projects -->
-<div class="section" id="projects">
-    <h2>Projects</h2>
-
-    <!-- GameJam -->
-    <h3 class="sub-title">GameJam</h3>
-
-    <div class="project">
-        <h4>Spooktober 6th Annual Visual Novel Jam — 3rd Place</h4>
-        <a class="link" href="https://red-bean-taiyaki.itch.io/mama" target="_blank">
-            View on itch.io
-        </a>
+    <!-- 首页 -->
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Kindergarten Incinerator</h1>
+            <p>Indie Game Studio / Indie Manga Studio</p>
+        </div>
     </div>
 
-    <!-- Indie Projects -->
-    <h3 class="sub-title">Indie Projects</h3>
-
-    <div class="project">
-        <h4>Terminal Stroll（终末漫游）</h4>
-        <p>WIP - A narrative-driven exploration game.</p>
+    <!-- Projects -->
+    <div class="section" id="projects">
+        <h2>Projects</h2>
+        <!-- GameJam -->
+        <h3 class="sub-title">GameJam</h3>
+        <div class="project">
+            <h4>Spooktober 6th Annual Visual Novel Jam — 3rd Place</h4>
+            <a class="link" href="https://red-bean-taiyaki.itch.io/mama" target="_blank">
+                View on itch.io
+            </a>
+        </div>
+        <!-- Indie Projects -->
+        <h3 class="sub-title">Indie Projects</h3>
+        <div class="project">
+            <h4>Terminal Stroll（终末漫游）</h4>
+            <p>WIP - A narrative-driven exploration game.</p>
+        </div>
     </div>
 
-</div>
-
-<!-- 课题拆解案之类的 -->
-<div class="section" id="case">
-    <h2>Case Study</h2>
-
-    <div class="project">
-        <h4>动作 Roguelite战斗空间退化问题拆解与反馈系统设计——以《死亡细胞》中后期体验为例</h4>
-         <p>
-        本课题聚焦动作Roguelite游戏后期因数值膨胀导致的战斗空间退化痛点<br><br>
-        通过引入动态失控环境系统，利用地形塌陷与路径重构打破玩家的策略收敛<br><br>
-        在保持高爽感的同时找回动作游戏的核心交互深度<br><br>
-        </p>
-        <a class="link" href="case-roguelike.html">Read More →</a>
+    <!-- 课题拆解案之类的 -->
+    <div class="section" id="case">
+        <h2>Case Study</h2>
+        <div class="project">
+            <h4>动作 Roguelite战斗空间退化问题拆解与反馈系统设计——以《死亡细胞》中后期体验为例</h4>
+            <p>
+                本课题聚焦动作Roguelite游戏后期因数值膨胀导致的战斗空间退化痛点<br><br>
+                通过引入动态失控环境系统，利用地形塌陷与路径重构打破玩家的策略收敛<br><br>
+                在保持高爽感的同时找回动作游戏的核心交互深度<br><br>
+            </p>
+            <a class="link" href="case-roguelike.html">Read More →</a>
+        </div>
+        <div class="project">
+            <h4>抗压高手：基于“压力阈值”的微恐游戏分析与设计框架</h4>
+            <p>
+                本文提出基于压力维持的微恐设计框架构建了压力模型<br><br>
+                通过深度拆解感官扰动、认知留白与机制限制的关系，界定微恐体验边界<br><br>
+                结合《小小梦魇2》案例验证提出行为驱动的动态阈值系统<br><br>
+                为微恐游戏提供系统化设计路径
+            </p>
+            <a class="link" href="case-pressure.html">Read More →</a>
+        </div>
     </div>
 
-    <div class="project">
-        <h4>抗压高手：基于“压力阈值”的微恐游戏分析与设计框架</h4>
-        <p>
-        本文提出基于压力维持的微恐设计框架构建了压力模型<br><br>
-        通过深度拆解感官扰动、认知留白与机制限制的关系，界定微恐体验边界<br><br>
-        结合《小小梦魇2》案例验证提出行为驱动的动态阈值系统<br><br>
-        为微恐游戏提供系统化设计路径
-        </p>
-        <a class="link" href="case-pressure.html">Read More →</a>
+    <!-- Art -->
+    <div class="section" id="art">
+        <h2>Art</h2>
+        <p>Coming soon...</p>
     </div>
 
-</div>
+    <!-- About -->
+    <div class="section" id="about">
+        <h2>About</h2>
+        <p>Coming soon...</p>
+    </div>
 
-<!-- Art -->
-<div class="section" id="art">
-    <h2>Art</h2>
-    <p>Coming soon...</p>
-</div>
+    <script>
+        window.addEventListener('load', () => {
+            const sections = document.querySelectorAll('.section');
+            const hero = document.querySelector('.hero');
+            let currentSection = 0;
+            let isScrolling = false;
 
-<!-- About -->
-<div class="section" id="about">
-    <h2>About</h2>
-    <p>Coming soon...</p>
-</div>
+            // 鼠标移动视差效果（保持原功能）
+            if (hero) {
+                const bg = hero.querySelector('.hero-bg');
+                const content = hero.querySelector('.hero-content');
+                if (bg && content) {
+                    hero.addEventListener('mousemove', (e) => {
+                        const x = (e.clientX / window.innerWidth - 0.5);
+                        const y = (e.clientY / window.innerHeight - 0.5);
+                        bg.style.transform = `translate(${x * 15}px, ${y * 15}px)`;
+                        content.style.transform = `translate(${x * 6}px, ${y * 6}px)`;
+                    });
+                }
+            }
 
-<script>
-window.addEventListener('load', () => {
-    const hero = document.querySelector('.hero');
-    const bg = document.querySelector('.hero-bg');
-    const content = document.querySelector('.hero-content');
+            // 滚动事件处理：实现曲线滑动和卡点
+            window.addEventListener('scroll', () => {
+                if (isScrolling) return;
+                isScrolling = true;
 
-    if (!hero || !bg || !content) return;
+                // 计算当前滚动位置
+                const scrollPosition = window.scrollY + window.innerHeight / 3;
 
-    hero.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5);
-        const y = (e.clientY / window.innerHeight - 0.5);
+                // 确定当前应该停留的 section
+                sections.forEach((section, index) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        currentSection = index;
+                    }
+                });
 
-        bg.style.transform = `translate(${x * 15}px, ${y * 15}px)`;
-        content.style.transform = `translate(${x * 6}px, ${y * 6}px)`;
-    });
-});
-</script>
+                // 平滑滚动到目标 section
+                setTimeout(() => {
+                    const targetSection = sections[currentSection] || hero;
+                    const targetPosition = targetSection.offsetTop;
 
+                    // 缓动动画（曲线效果）
+                    let start = window.scrollY;
+                    const distance = targetPosition - start;
+                    const duration = 800; // 动画持续时间
+                    let startTime = null;
+
+                    function animation(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const progress = Math.min(timeElapsed / duration, 1);
+                        // 缓动函数：easeInOutCubic（先慢后快再慢）
+                        const easeProgress = progress < 0.5 
+                            ? 4 * progress * progress * progress 
+                            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                        window.scrollTo(0, start + distance * easeProgress);
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        }
+                    }
+                    requestAnimationFrame(animation);
+                    isScrolling = false;
+                }, 100);
+            });
+
+            // 导航链接点击事件：平滑滚动
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
