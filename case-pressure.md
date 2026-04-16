@@ -7,7 +7,7 @@
 
 **传统恐怖与微恐的对比在于：**
 
-![alt text](image-4.png)
+![](/images/case-pressure/horror_1.png)
 
 **二者在给予玩家压力的程度上呈以下趋势：**
 ![alt text](image-5.png)
