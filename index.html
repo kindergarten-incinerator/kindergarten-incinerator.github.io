@@ -3,24 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Kindergarten Incinerator</title>
-
 <style>
-<script>
-const hero = document.querySelector('.hero');
-const bg = document.querySelector('.hero-bg');
-const content = document.querySelector('.hero-content');
 
-hero.addEventListener('mousemove', (e) => {
-    const x = (e.clientX / window.innerWidth - 0.5);
-    const y = (e.clientY / window.innerHeight - 0.5);
 
-    // 背景：更慢（远）
-    bg.style.transform = `translate(${x * 15}px, ${y * 15}px)`;
-
-    // 文字：更轻（近）
-    content.style.transform = `translate(${x * 6}px, ${y * 6}px)`;
-});
-</script>
 body {
     margin: 0;
     background: #050505;
