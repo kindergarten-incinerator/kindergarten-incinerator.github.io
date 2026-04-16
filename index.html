@@ -223,5 +223,23 @@ a.link:hover {
     <p>Coming soon...</p>
 </div>
 
+<script>
+window.addEventListener('load', () => {
+    const hero = document.querySelector('.hero');
+    const bg = document.querySelector('.hero-bg');
+    const content = document.querySelector('.hero-content');
+
+    if (!hero || !bg || !content) return;
+
+    hero.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5);
+        const y = (e.clientY / window.innerHeight - 0.5);
+
+        bg.style.transform = `translate(${x * 15}px, ${y * 15}px)`;
+        content.style.transform = `translate(${x * 6}px, ${y * 6}px)`;
+    });
+});
+</script>
+
 </body>
 </html>
